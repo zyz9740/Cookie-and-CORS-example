@@ -1,25 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
-function handleClick() {
-    fetch('http://127.0.0.1:3000',{
-        method:'POST',
-        headers:{
-            'Content-Type':'application/x-www-form-urlencoded'
-        },
-        body: "username=zyz9740"
-    })
-        // .then(res =>res.formData())
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-}
-
-function App() {
-  return (
-    <div className="App">
-      <button onClick={handleClick}>login</button>
-    </div>
-  );
+class App extends Component {
+    handleClick() {
+        fetch('http://127.0.0.1:8080',{
+            method:'GET'
+        })
+            .then(res => {
+                console.log(res)
+                console.log("Meet CORS.")
+            })
+            .catch(err => console.log(err))
+    }
+    render() {
+        return (
+            <div className="App">
+                <button onClick={this.handleClick}>login</button>
+            </div>
+        );
+    }
 }
 
 export default App;
